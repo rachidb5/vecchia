@@ -1,0 +1,27 @@
+body {
+    height: 100%;
+}
+
+.casa{
+    border-bottom: 2px solid black;
+    border-right: 2px solid black;
+    width: 100px;
+    height: 100px;
+}
+
+.ultima-casa {
+    border-right: 0 !important;
+}
+
+.ultima-linha {
+    border-bottom: 0 !important;
+}
+
+.main{
+    width: 100%;
+}
+
+div{
+    font-size: 100px;
+    text-align: center;
+}
