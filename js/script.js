@@ -1,11 +1,14 @@
 const casa = document.getElementsByClassName('casa');
-const simbolo = document.getElementsByTagName('h1');
+const vencedor= document.getElementsByClassName('winner')[0];
 let count = 1;
-let vencedor = ''
+let vencedorNome = ''
 
 function getWinner(q1, q2, q3) {
     if(q1.innerHTML !== "" && q1.innerHTML === q2.innerHTML && q2.innerHTML === q3.innerHTML){
-        console.log(vencedor)
+        console.log(vencedor.innerHTML)
+        vencedor.innerHTML = vencedorNome
+        console.log(vencedor.innerHTML)
+        console.log(vencedorNome)
     }
 }
 
@@ -15,13 +18,13 @@ for (let i = 0; i < casa.length; i += 1) {
         if(count % 2 !== 0){
             if(event.target.innerHTML === "") {
             event.target.innerHTML = "X"
-            vencedor = 'jogador 1'
+            vencedorNome = 'Vencedor: jogador 1'
             count ++
         }
         } else {
             if(event.target.innerHTML === ""){
             event.target.innerHTML = "O"
-            vencedor = 'jogador 2'
+            vencedorNome = 'Vencedor: jogador 2'
             count ++
             }
         }
