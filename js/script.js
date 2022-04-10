@@ -1,14 +1,22 @@
 const casa = document.getElementsByClassName('casa');
 const vencedor= document.getElementsByClassName('winner')[0];
+const scoreBoard = document.getElementsByTagName('h2')
 let count = 1;
 let vencedorNome = ''
+let score1 = 0;
+let score2 = 0;
+let indexPlayer = 1;
 
-function getWinner(q1, q2, q3) {
+scoreBoard[0].innerHTML = score1
+scoreBoard[1].innerHTML = score2
+
+function getWinner(q1, q2, q3, i) {
     if(q1.innerHTML !== "" && q1.innerHTML === q2.innerHTML && q2.innerHTML === q3.innerHTML){
-        console.log(vencedor.innerHTML)
         vencedor.innerHTML = vencedorNome
-        console.log(vencedor.innerHTML)
-        console.log(vencedorNome)
+        scoreBoard[i].innerHTML++
+        for(let i =0; i < casa.length; i++){
+            casa[i].innerHTML = '';
+        }
     }
 }
 
@@ -20,21 +28,23 @@ for (let i = 0; i < casa.length; i += 1) {
             event.target.innerHTML = "X"
             vencedorNome = 'Vencedor: jogador 1'
             count ++
+            indexPlayer = 0
         }
         } else {
             if(event.target.innerHTML === ""){
             event.target.innerHTML = "O"
             vencedorNome = 'Vencedor: jogador 2'
             count ++
+            indexPlayer = 1
             }
         }
-        getWinner(casa[0], casa[1], casa[2])
-        getWinner(casa[3], casa[4], casa[5])
-        getWinner(casa[6], casa[7], casa[8])
-        getWinner(casa[0], casa[3], casa[6])
-        getWinner(casa[1], casa[4], casa[7])
-        getWinner(casa[2], casa[5], casa[8])
-        getWinner(casa[0], casa[4], casa[8])
-        getWinner(casa[2], casa[4], casa[6])
+        getWinner(casa[0], casa[1], casa[2], indexPlayer)
+        getWinner(casa[3], casa[4], casa[5], indexPlayer)
+        getWinner(casa[6], casa[7], casa[8], indexPlayer)
+        getWinner(casa[0], casa[3], casa[6], indexPlayer)
+        getWinner(casa[1], casa[4], casa[7], indexPlayer)
+        getWinner(casa[2], casa[5], casa[8], indexPlayer)
+        getWinner(casa[0], casa[4], casa[8], indexPlayer)
+        getWinner(casa[2], casa[4], casa[6], indexPlayer)
     });
   }
