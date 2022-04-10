@@ -6,6 +6,8 @@ let vencedorNome = ''
 let score1 = 0;
 let score2 = 0;
 let indexPlayer = 1;
+let starterTurn = 1;
+let playsCount = 0
 
 scoreBoard[0].innerHTML = score1
 scoreBoard[1].innerHTML = score2
@@ -17,6 +19,18 @@ function getWinner(q1, q2, q3, i) {
         for(let i =0; i < casa.length; i++){
             casa[i].innerHTML = '';
         }
+        starterTurn++
+        count = starterTurn
+        playsCount = 0
+    }
+        if(playsCount === 9){
+            vencedor.innerHTML= 'Empate'
+            for(let i =0; i < casa.length; i++){
+                casa[i].innerHTML = '';
+            }
+            starterTurn++
+            count = starterTurn
+            playsCount = 0
     }
 }
 
@@ -28,6 +42,7 @@ for (let i = 0; i < casa.length; i += 1) {
             event.target.innerHTML = "X"
             vencedorNome = 'Vencedor: jogador 1'
             count ++
+            playsCount++
             indexPlayer = 0
         }
         } else {
@@ -35,6 +50,7 @@ for (let i = 0; i < casa.length; i += 1) {
             event.target.innerHTML = "O"
             vencedorNome = 'Vencedor: jogador 2'
             count ++
+            playsCount++
             indexPlayer = 1
             }
         }
@@ -46,5 +62,6 @@ for (let i = 0; i < casa.length; i += 1) {
         getWinner(casa[2], casa[5], casa[8], indexPlayer)
         getWinner(casa[0], casa[4], casa[8], indexPlayer)
         getWinner(casa[2], casa[4], casa[6], indexPlayer)
+        console.log(playsCount)
     });
   }
